@@ -5,34 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>No-Kyc</title>
+    <script src="https://kit.fontawesome.com/3403a4c9e3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <style>
-        .nokyc{
-            height: 270px;
-            width: 250px;
-            position: absolute;
-            left: 38%;
-            top: 22%;
-            border: 2px solid purple;
-            padding: 30px;
-            
+        body{
+            background-image: url("https://www.keystonelaw.com/wp-content/uploads/2019/10/Auction-Gavel-Website.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
         }
+        .nokyc{
+            height: 350px;
+    width: 550px;
+    position: absolute;
+    left: 31%;
+    top: 20%;
+    border: 2px solid white;
+    padding: 42px;
+    border-radius: 9px;
+    color: white;
+}
         .nkyc{
             position: relative;
             left: 30px;
-            font-size: 20px;
+            font-size: 15px;
             font-weight: bold;
             font-style: italic;
             column-gap: 40px;
+        }
+        form {
+            display: block;
+            margin-top: 35px;
+        }
+        
+        .dev{
+            margin: 12px;
+        }
+        .deva{
+            margin: 10px;
+        }
+        .devb{
+            margin: 10px;
+        }
+        #butt{
+            margin-top: 5px;
+            position: relative;
+            left: 320px;
+        }
+        .flexy{
+            display: flex;
+        }
+        .files{
+            margin-top: 7px;
+            margin-left: 8px;
+        }
+        #identity{
+            margin-left: 58px;
+        }
+        #colu{
+            color: rgb(184, 24, 24);
         }
 
     </style>
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <div class="nokyc">
         <div class="nkyc">
     <h1>No KYC ? Don't worry</h1>
    <form action="">
-    <label for="Document">Document</label>
+    <i class="fa-sharp fa-solid fa-2x fa-file" id="colu"></i>
+    <label for="Document" class="dev">Document</label>
     <select name="" id="identity">
         <option value="Idetification">Select Identity</option>
       <option value="Idetification">Aadhar-card</option>
@@ -42,15 +84,21 @@
       
 
     </select><br>
-    <label for="Documents">Document Number</label>
+    <i class="fa-sharp fa-solid fa-2x fa-file-lines" id="colu"></i>
+    <label for="Documents" class="deva">Document Number</label>
     <input type="text">
     <br>
-
-    <label for="photo">Upload Document</label>
-    <input type="file">
+   
+    <div class="flexy">
+    <i class="fa-sharp fa-solid fa-2x fa-upload" id="colu"></i>
+    <label for="photo" class="devb">Upload Document</label>
+    <input type="file" class="files">
     <br>
+</div>
    </form>
-    
+   <div class="newc">
+    <button type="button" class="btn btn-primary" id="butt">Done</button>
+    </div>
 
    
 
