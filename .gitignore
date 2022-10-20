@@ -1,2 +1,5 @@
-node_modules
-config
+# dependencies
+node_modules/
+
+# environment variables
+.env
