@@ -7,16 +7,17 @@
     <title>Add items</title>
     <style>
         .body{
-            background-image: url('https://media.istockphoto.com/photos/gavel-on-auction-word-picture-id917901978?k=20&m=917901978&s=612x612&w=0&h=NULGu8-bVpy28gbW6AZbZlEVra-Q4s2rg607emPfkCs=');
+            background-image: url('');
         }
         .item{
             position: absolute;
-            left: 42%;
-            top: 17%;
+            left: 28%;
+            top: 21%;
             border: 2px solid purple;
             padding: 40px;
-            height: 340px;
-            width: 200px;
+            height: 200px;
+            width: 430px;
+            border-radius: 12px;
             
             
         }
@@ -24,12 +25,30 @@
             font-size: 20px;
             padding: 10px;
             position: relative;
-            bottom: 20px;
+            left: 47px;
+            bottom: 35px;
             font-style: italic;
             font-weight: bold;
+            height: 190px;
+            width: 430px;
+            font-size: 22px;
+        }
+        #buck{
+            margin-right: 10px;
+        }
+        .inpa{
+            margin-left: 70px;
+        }
+        .inpb{
+            margin-left: 23px;
+        }
+        .inpc{
+            margin-left: 7px;
         }
 
+       
     </style>
+     <script src="https://kit.fontawesome.com/3403a4c9e3.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="item">
@@ -39,12 +58,19 @@
             Add New Items
           </h1>
         <form action="">
-            <label for="">
-               item <input type="text"><br>
-               Quantity <input type="number"><br>
-               Base-Price<input type="number"><br>
-               Img-of-Items<input type="file">
-            </label>
+            <i class="fa-solid  fa-bucket" id="buck"></i>
+            <label for="text">item</label>
+            <input type="text" class="inpa"><br>
+            <i class="fa-sharp fa-solid fa-arrow-up-wide-short" id="buck"></i>
+            <label for="number">Quantity</label>
+            <input type="number" class="inpb"><br>
+            <i class="fa-solid fa-money-bill" id="buck"></i>
+            <label for="number">Base-price</label>
+            <input type="number" class="inpc"><br>
+            <i class="fa-solid fa-image" id="buck"></i>
+            <label for="file">Img-of-Items</label>
+            <input type="file" class="inpd">
+            
 
         </form>
       </div>
