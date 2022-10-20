@@ -9,7 +9,7 @@ const success = 'success';
 const dashboard = (req,res)=>{
     try{
         
-        res.status(200).send(success);
+        res.status(200).render('home');
     }
     catch (err) {
         res.status(400).send(err);
