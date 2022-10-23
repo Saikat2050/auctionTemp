@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/auctionHouse';
+const dbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/<database>';
 mongoose.Promise = global.Promise;
 /*mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);

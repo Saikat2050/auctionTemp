@@ -13,8 +13,9 @@ const buyerSchema = new Schema(
             required: true
         },
         number: { type: Number, required: true },
-        password: { type: String, default: true },
-        address: { type: String, default: true },
+        password: { type: String, required: true },
+        address: { type: String, required: true },
+        isVerified: {type: Boolean, default: false},
     },
     { timestamps: true }
 );

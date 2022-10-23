@@ -15,6 +15,7 @@ const sellerSchema = new Schema(
         number: { type: Number, required: true },
         password: { type: String, required: true },
         address: { type: String, required: true },
+        isVerified: {type: Boolean, default: false},
     },
     { timestamps: true }
 );
