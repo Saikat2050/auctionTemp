@@ -113,7 +113,7 @@ const buyRegistration = async(req,res)=>{
         const regis = new Regis(req.body);
         regis.password = await bcrypt.hash(regis.password, saltRounds);
        const data = await regis.save();
-        res.status(200).send(success);
+        res.clearCookie('authToken').status(200).send(success);
         }
         else
             res.status(400).send(mis);
@@ -144,7 +144,7 @@ const sellRegistration = async(req,res)=>{
             const seller = new Seller(req.body);
         seller.password = await bcrypt.hash(seller.password, saltRounds);
         const data = await seller.save();
-        res.status(200).send(success);
+        res.clearCookie('authToken').status(200).send(success);
     }
     else
         res.status(400).send(mis);
@@ -181,7 +181,7 @@ const buy_otp = async(req,res)=>{
                     subject: "One Time Password", // Subject line
                     html: `<p>One Time Password for Auction House is ${otp}. Please provide the OTP in the web page or click in the below link</p><br><a href="http://localhost:3000/buyer_otp/?token=${token}">Verify Yourself</a>`, // html body
                   });
-                  res.cookie(`otpToken`,`${otpTok}`).status(200).send({success, status: info.messageId});
+                  res.cookie(`otpToken`,`${otpTok}`, {maxAge: 600000}).status(200).send({success, status: info.messageId});
             }
         }
     }
@@ -191,17 +191,22 @@ const buy_otp = async(req,res)=>{
 };
 const buyOtp = async(req,res)=>{
     try{
+        const error = process.env.FAILED;
         const msg = process.env.VALID;
         const id = req.query.id;
         const verify = req.body.verify;
         const otpTok = req.cookies.otpToken;
-        const decoded = await jwt.verify(otpTok, otpSecret);
+        if(!otpTok)
+            res.status(400).send(error);
+        else{
+            const decoded = await jwt.verify(otpTok, otpSecret);
         if(decoded.data==verify){
             const data = await Regis.findByIdAndUpdate(id, {isVerified:true});
-            res.status(200).send(success);
+            res.clearCookie('otpToken').status(200).send(success);
         }
         else
             res.status(403).send(msg);
+        }
     }
     catch (err) {
         res.status(400).send(err);
@@ -247,7 +252,7 @@ const sell_otp = async(req,res)=>{
                     subject: "One Time Password", // Subject line
                     html: `<p>One Time Password for Auction House is ${otp}. Please provide the OTP in the web page or click in the below link</p><br><a href="http://localhost:3000/seller_otp/?token=${token}">Verify Yourself</a>`, // html body
                   });
-                  res.cookie(`otpToken`,`${otpTok}`).status(200).send({success, otp: otpTok, status: info.messageId});
+                  res.cookie(`otpToken`,`${otpTok}`, {maxAge: 600000}).status(200).send({success, status: info.messageId});
             }
         }
     }
@@ -257,17 +262,22 @@ const sell_otp = async(req,res)=>{
 };
 const sellOtp = async(req,res)=>{
     try{
+        const error = process.env.FAILED;
         const msg = process.env.VALID;
         const id = req.query.id;
         const verify = req.body.verify;
         const otpTok = req.cookies.otpToken;
-        const decoded = await jwt.verify(otpTok, otpSecret);
+        if(!otpTok)
+            res.status(400).send(error);
+        else{
+            const decoded = await jwt.verify(otpTok, otpSecret);
         if(decoded.data==verify){
             const data = await Seller.findByIdAndUpdate(id, {isVerified:true});
-            res.status(200).send(success);
+            res.clearCookie('otpToken').status(200).send(success);
         }
         else
             res.status(403).send(msg);
+        }
     }
     catch (err) {
         res.status(400).send(err);
@@ -330,7 +340,7 @@ const buyer_reset = async(req, res) =>{
             res.status(406).send(err);
         else{
             const token = jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '5m' });
-            res.cookie(`resetToken`,`${token}`).status(200).send(result);
+            res.cookie(`resetToken`,`${token}`, {maxAge: 600000}).status(200).send(result);
         }
     }
     catch(err){
@@ -339,21 +349,35 @@ const buyer_reset = async(req, res) =>{
 };
 const buyerReset = async(req,res)=>{
     try{
+        const error = process.env.FAILED;
         const mis = process.env.MISMATCH;
         const fail = process.env.FAILED;
+        const newPass = process.env.NEWPASS;
+        const password = req.body.password;
         const token = req.cookies.resetToken;
-        const decoded = await jwt.verify(token, secret);
-        if(!decoded.data)
-            res.status(401).send(fail);
+        if(!token)
+            res.status(400).send(error);
         else{
-            if(req.body.password==req.body.confirm){
-                const password = await bcrypt.hash(req.body.password, saltRounds);
-                const result = await Regis.findByIdAndUpdate(decoded.data, {password});
-                res.status(200).send(success);
+            const decoded = await jwt.verify(token, secret);
+            if(!decoded.data)
+                res.status(401).send(fail);
+            else{
+                if(password==req.body.confirm){
+                    const temp = await Regis.findById(decoded.data);
+                    const hash = temp.password;
+                    const verification = await bcrypt.compare(password, hash);
+                    if(verification)
+                        res.status(406).send(newPass);
+                    else{
+                        const passcode = await bcrypt.hash(password, saltRounds);
+                    const result = await Regis.findByIdAndUpdate(decoded.data, {password: passcode});
+                    res.clearCookie('resetToken','authToken').status(200).send(success);
+                    }
+                    }
+                    else
+                        res.status(400).send(mis);
                 }
-                else
-                    res.status(400).send(mis);
-            }
+        }
     }
     catch(err){
         res.status(400).send(err);
@@ -401,7 +425,7 @@ const seller_reset = async(req, res) =>{
             res.status(406).send(err);
         else{
             const token = jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '5m' });
-            res.cookie(`resetToken`,`${token}`).status(200).send(result);
+            res.cookie(`resetToken`,`${token}`, {maxAge: 600000}).status(200).send(result);
         }
     }
     catch(err){
@@ -410,25 +434,52 @@ const seller_reset = async(req, res) =>{
 };
 const sellerReset = async(req,res)=>{
     try{
+        const error = process.env.FAILED;
         const mis = process.env.MISMATCH;
         const fail = process.env.FAILED;
+        const newpass = process.env.NEWPASS;
+        const password = req.body.password;
         const token = req.cookies.resetToken;
-        const decoded = await jwt.verify(token, secret);
+        if(!token)
+            res.status(400).send(error);
+        else{
+            const decoded = await jwt.verify(token, secret);
         if(!decoded.data)
             res.status(401).send(fail);
         else{
             if(req.body.password==req.body.confirm){
-                const password = await bcrypt.hash(req.body.password, saltRounds);
+                const temp = await Seller.findById(decoded.data);
+                const hash = temp.password;
+                const verification = await bcrypt.compare(password, hash);
+                if(verification)
+                    res.status(406).send(newpass);
+                else{
+                    const password = await bcrypt.hash(req.body.password, saltRounds);
                 const result = await Seller.findByIdAndUpdate(decoded.data, {password});
-                res.status(200).send(success);
+                res.clearCookie('resetToken','authToken').status(200).send(success);
+                }
                 }
                 else
                     res.status(400).send(mis);
             }
+        }
     }
     catch(err){
         res.status(400).send(err);
     }
+};
+const logout = async(req,res)=>{
+    try{
+        const msg = process.env.NOTLOGIN;
+        const isLogin = req.cookies.authToken;
+        if(!isLogin)
+            res.ststus(400).send(msg);
+        else
+            res.clearCookie('authToken').status(200).send(success);
+    }
+    catch (err) {
+        res.status(400).send(err);
+    } 
 };
 
 module.exports = {
@@ -454,5 +505,6 @@ module.exports = {
     buyer_otp,
     sell_otp,
     sellOtp,
-    seller_otp
+    seller_otp,
+    logout
 }
