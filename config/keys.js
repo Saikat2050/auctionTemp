@@ -1,5 +1,31 @@
 const dotenv = require('dotenv').config();
 const nodemailer = require('nodemailer');
+const Regis = require('../models/buyerSchema');
+const Seller = require('../models/sellerSchema');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+ 
+/*const sellerOauth = passport.use(new GoogleStrategy({
+    clientID:  process.env.CLIENTID,
+    clientSecret: process.env.CLIENTSECRET,
+    callbackURL: "http://localhost:3000/seller/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    Seller.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+const buyerOauth = passport.use(new GoogleStrategy({
+  clientID:  process.env.CLIENTID,
+  clientSecret: process.env.CLIENTSECRET,
+  callbackURL: "http://localhost:3000/buyer/auth/google/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  Regis.findOrCreate({ googleId: profile.id }, function (err, user) {
+    return cb(err, user);
+  });
+}
+));*/
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -18,4 +44,4 @@ const transporter = nodemailer.createTransport({
 
 module.exports = {
     transporter
-}
+};

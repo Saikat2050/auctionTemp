@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', userRoutes);
 app.use('/seller', sellerRoutes);
+app.use('/buyer', sellerRoutes);
 
 app.use('*', (req, res) => {
     res.status(404).send(error);
