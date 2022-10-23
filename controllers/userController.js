@@ -247,7 +247,7 @@ const sell_otp = async(req,res)=>{
                     subject: "One Time Password", // Subject line
                     html: `<p>One Time Password for Auction House is ${otp}. Please provide the OTP in the web page or click in the below link</p><br><a href="http://localhost:3000/seller_otp/?token=${token}">Verify Yourself</a>`, // html body
                   });
-                  res.cookie(`otpToken`,`${otpTok}`).status(200).send({success, otp: otpTok, status: info.messageId});
+                  res.cookie(`otpToken`,`${otpTok}`).status(200).send({success, status: info.messageId});
             }
         }
     }
