@@ -25,5 +25,6 @@ router.get('/seller_forget', userController.seller_forget);
 router.post('/seller_forget', userController.sellForget);
 router.get('/seller_reset', userController.seller_reset);
 router.post('/seller_reset', userController.sellerReset);
+router.get('/logout', userController.logout);
 
 module.exports = router;
