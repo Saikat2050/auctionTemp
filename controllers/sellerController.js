@@ -201,6 +201,7 @@ const profile = async(req,res)=>{
 };
 const donate = (req,res)=>{
     try{
+        const key = PUBLISHABLE_KEY;
         res.status(200).send(success);
     }
     catch(err){

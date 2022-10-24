@@ -2,7 +2,6 @@ const Regis = require('../models/buyerSchema');
 const Seller = require('../models/sellerSchema');
 const dotenv = require('dotenv').config();
 const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 const {transporter} = require('../config/keys');
 const _ = require('lodash');

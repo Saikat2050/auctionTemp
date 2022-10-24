@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
-const sellSchema = new Schema(
+const buySchema = new Schema(
     {
         email: {
             type: String,
@@ -21,7 +21,7 @@ const sellSchema = new Schema(
     },
     { timestamps: true }
 );
-sellSchema.plugin(uniqueValidator);
+buySchema.plugin(uniqueValidator);
 
-const Sell = mongoose.model("Sell", sellSchema);
-module.exports = Sell;
+const Buy = mongoose.model("Buy", buySchema);
+module.exports = Buy;

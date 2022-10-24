@@ -14,11 +14,12 @@ const itemSchema = new Schema(
         },
         quantity: { type: Number, required: true, default: 1 },
         price: { type: Number, required: true },
-        itamId: {
+        itemId: {
             type: mongoose.SchemaTypes.ObjectId,
             required: true,
             ref: "Auction"
         },
+        return: {type: Date, required: true, default: Date.now()},
         status: {type: String},
         remark: {type: String},
     },
