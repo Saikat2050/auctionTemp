@@ -7,6 +7,9 @@ const Kyc = require('../models/kyc');
 const Bank = require('../models/bankSchema');
 const Pay = require('../models/donateSchema');
 const Issue = require('../models/issueSchema');
+const PUBLISHABLE_KEY=process.env.PUBLISHABLE_KEY;
+const SECRET_KEY=process.env.SECRET_KEY;
+const stripe=require('stripe')(SECRET_KEY);
 //const {sellerOauth} = require('../config/keys');
 const secret = process.env.SECRECT;
 const success = process.env.SUCCESS;
@@ -69,6 +72,7 @@ const newItem = async(req,res)=>{
         const user = req.user;
         const data = req.body;
         data.email = user.email;
+        data.avatar = req.file.filename;
         const item = new Item(data);
         const result = await item.save();
         res.status(201).send(result);
@@ -81,7 +85,7 @@ const listItems = async(req,res)=>{
     try{
         const user = req.user;
         const msg = process.env.NODATA;
-        const result = await Item.findOne({email:user.email});
+        const result = await Item.findOne({email:user.email}).exec();
         if(!result)
             res.status(200).send(msg);
         else
@@ -116,7 +120,7 @@ const noKyc = (req,res)=>{
 const listKyc = async(req,res)=>{
     try{
         const user = req.user.email;
-        const data = await Kyc.findOne({email:user, userType:"seller"});
+        const data = await Kyc.findOne({email:user, userType:"seller"}).exec();
         if(!data)
             res.redirect('/seller/no_kyc');
         else
@@ -156,7 +160,7 @@ const noBank = (req,res)=>{
 const listBank = async(req,res)=>{
     try{
         const user = req.user.email;
-        const data = await Bank.findOne({email:user});
+        const data = await Bank.findOne({email:user}).exec();
         if(!data)
             res.redirect('/seller/no_bank');
         else
@@ -198,6 +202,7 @@ const profile = async(req,res)=>{
 };
 const donate = (req,res)=>{
     try{
+        const key = PUBLISHABLE_KEY;
         res.status(200).send(success);
     }
     catch(err){
@@ -215,7 +220,18 @@ const donation = async(req,res)=>{
             description:data.description
         });
         const result = await pay.save();
-        res.status(200).send(success);
+        const customer = await stripe.customers.create({
+            email:req.body.stripeEmail,
+            source:req.body.stripeToken,
+        });
+        const charge = await stripe.charges.create({
+            amount:data.amount,
+            description:data.description,
+            currency:'inr',
+            customer:customer.id
+     });
+     const update = await Pay.findByIdAndUpdate(result._id,{status:"Success", remark:"Payment through card"});
+    res.status(200).send(success);
     }
     catch(err){
         res.status(400).send(err);
