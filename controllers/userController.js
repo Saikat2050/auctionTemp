@@ -113,7 +113,7 @@ const buyRegistration = async(req,res)=>{
         const regis = new Regis(req.body);
         regis.password = await bcrypt.hash(regis.password, saltRounds);
        const data = await regis.save();
-        res.clearCookie('authToken').status(200).send(success);
+        res.clearCookie('authToken').status(201).send(success);
         }
         else
             res.status(400).send(mis);
@@ -144,7 +144,7 @@ const sellRegistration = async(req,res)=>{
             const seller = new Seller(req.body);
         seller.password = await bcrypt.hash(seller.password, saltRounds);
         const data = await seller.save();
-        res.clearCookie('authToken').status(200).send(success);
+        res.clearCookie('authToken').status(201).send(success);
     }
     else
         res.status(400).send(mis);
