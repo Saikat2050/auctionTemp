@@ -7,6 +7,9 @@ const Kyc = require('../models/kyc');
 const Bank = require('../models/bankSchema');
 const Pay = require('../models/donateSchema');
 const Issue = require('../models/issueSchema');
+const PUBLISHABLE_KEY=process.env.PUBLISHABLE_KEY;
+const SECRET_KEY=process.env.SECRET_KEY;
+const stripe=require('stripe')(SECRET_KEY);
 //const {sellerOauth} = require('../config/keys');
 const secret = process.env.SECRECT;
 const success = process.env.SUCCESS;
@@ -215,7 +218,18 @@ const donation = async(req,res)=>{
             description:data.description
         });
         const result = await pay.save();
-        res.status(200).send(success);
+        const customer = await stripe.customers.create({
+            email:req.body.stripeEmail,
+            source:req.body.stripeToken,
+        });
+        const charge = await stripe.charges.create({
+            amount:data.amount,
+            description:data.description,
+            currency:'inr',
+            customer:customer.id
+     });
+     const update = await Pay.findByIdAndUpdate(result._id,{status:"Success", remark:"Payment through card"});
+    res.status(200).send(success);
     }
     catch(err){
         res.status(400).send(err);
