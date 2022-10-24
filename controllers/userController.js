@@ -80,7 +80,7 @@ const sellLogin = async (req,res)=>{
         const hash = result.password;
         const verification = await bcrypt.compare(password, hash); 
         if(verification){
-            const token = jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '10h' });
+            const token =await jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '10h' });
             res.cookie(`authToken`,`${token}`).status(200).send(success);
         }
         else
@@ -113,7 +113,7 @@ const buyRegistration = async(req,res)=>{
         const regis = new Regis(req.body);
         regis.password = await bcrypt.hash(regis.password, saltRounds);
        const data = await regis.save();
-        res.clearCookie('authToken').status(200).send(success);
+        res.clearCookie('authToken').status(201).send(success);
         }
         else
             res.status(400).send(mis);
@@ -144,7 +144,7 @@ const sellRegistration = async(req,res)=>{
             const seller = new Seller(req.body);
         seller.password = await bcrypt.hash(seller.password, saltRounds);
         const data = await seller.save();
-        res.clearCookie('authToken').status(200).send(success);
+        res.clearCookie('authToken').status(201).send(success);
     }
     else
         res.status(400).send(mis);
@@ -168,11 +168,11 @@ const buy_otp = async(req,res)=>{
             if(data.isVerified)
                 res.status(409).send(msg2);
             else{
-                const otp = _.random(100000,999999);
-                const otpTok = jwt.sign({
+                const otp =await _.random(100000,999999);
+                const otpTok =await jwt.sign({
                     data: `${otp}`
                   }, otpSecret, { expiresIn: '10m' });
-                const token = jwt.sign({
+                const token =await jwt.sign({
                     data: `${data._id}`
                   }, otpSecret, { expiresIn: '10m' });
                 const info = await transporter.sendMail({
@@ -239,11 +239,11 @@ const sell_otp = async(req,res)=>{
             if(data.isVerified)
                 res.status(409).send(msg2);
             else{
-                const otp = _.random(100000,999999);
-                const otpTok = jwt.sign({
+                const otp =await _.random(100000,999999);
+                const otpTok =await jwt.sign({
                     data: `${otp}`
                   }, otpSecret, { expiresIn: '10m' });
-                const token = jwt.sign({
+                const token =await jwt.sign({
                     data: `${data._id}`
                   }, otpSecret, { expiresIn: '10m' });
                 const info = await transporter.sendMail({
@@ -314,7 +314,7 @@ const buyForget = async(req,res)=>{
     if(!data)
         res.status(401).send(msg);
     else{
-        const token = jwt.sign({
+        const token =await jwt.sign({
             data: `${data._id}`
           }, otpSecret, { expiresIn: '10m' });
         const info = await transporter.sendMail({
@@ -339,7 +339,7 @@ const buyer_reset = async(req, res) =>{
         if(!result)
             res.status(406).send(err);
         else{
-            const token = jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '5m' });
+            const token =await jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '5m' });
             res.cookie(`resetToken`,`${token}`, {maxAge: 600000}).status(200).send(result);
         }
     }
@@ -399,7 +399,7 @@ const sellForget = async(req,res)=>{
     if(!data)
         res.status(401).send(msg);
     else{
-        const token = jwt.sign({
+        const token =await jwt.sign({
             data: `${data._id}`
           }, otpSecret, { expiresIn: '10m' });
         const info = await transporter.sendMail({

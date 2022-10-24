@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const userRoutes = require('./routes/userRouters');
 const sellerRoutes = require('./routes/sellerRouters');
+//const buyerRoutes = require('./routes/buyerRouters');
 const port = process.env.PORT || 3000;
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', userRoutes);
 app.use('/seller', sellerRoutes);
-//app.use('/buyer', sellerRoutes);
+//app.use('/buyer', buyerRoutes);
 
 app.use('*', (req, res) => {
     res.status(404).send(error);
