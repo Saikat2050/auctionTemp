@@ -10,7 +10,7 @@ router.use(auth.sellerAuth);
 router.get('/', sellerController.seller_dashboard);
 router.get('/history', sellerController.history);
 router.get('/new_item', sellerController.new_item);
-router.post('/new_item', sellerController.newItem);
+router.post('/new_item', upload.single('avatar'),sellerController.newItem);
 router.get('/items', sellerController.listItems);
 router.get('/auction', sellerController.auction);
 router.get('/no_kyc', sellerController.noKyc);

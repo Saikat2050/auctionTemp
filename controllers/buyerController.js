@@ -22,9 +22,10 @@ catch(err){
 const createReturn = async(req,res)=>{
     try{
         const user = req.user;
+        const avatar = req.file.filename;
         const data = req.body.description;
         const id = req.query.id;
-        const result = await Buy.findByIdAndUpdate(id,{remark:data, status:"applied for return"});
+        const result = await Buy.findByIdAndUpdate(id,{avatar,remark:data, status:"applied for return"});
         res.status(200).send(success, result);
 }
 catch(err){

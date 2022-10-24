@@ -16,6 +16,7 @@ const buySchema = new Schema(
         basePrice: { type: Number, required: true },
         highest: { type: Number, required: true },
         return: {type: Date, required: true, default: Date.now()},
+        avatar: {type: String},
         status: {type: String, default: "Success"},
         remark: {type: String},
     },

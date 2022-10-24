@@ -9,7 +9,7 @@ router.use(auth.buyerAuth);
 router.get('/', buyerController.buyer_dashboard);
 
 router.get('/return', buyerController.returnItem);
-router.post('/return', buyerController.createReturn);
+router.post('/return', upload.single('avatar'),buyerController.createReturn);
 router.get('/list_return', buyerController.listReturn)
 
 module.exports = router;

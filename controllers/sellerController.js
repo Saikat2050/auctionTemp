@@ -72,6 +72,7 @@ const newItem = async(req,res)=>{
         const user = req.user;
         const data = req.body;
         data.email = user.email;
+        data.avatar = req.file.filename;
         const item = new Item(data);
         const result = await item.save();
         res.status(201).send(result);
@@ -84,7 +85,7 @@ const listItems = async(req,res)=>{
     try{
         const user = req.user;
         const msg = process.env.NODATA;
-        const result = await Item.findOne({email:user.email});
+        const result = await Item.findOne({email:user.email}).exec();
         if(!result)
             res.status(200).send(msg);
         else
@@ -119,7 +120,7 @@ const noKyc = (req,res)=>{
 const listKyc = async(req,res)=>{
     try{
         const user = req.user.email;
-        const data = await Kyc.findOne({email:user, userType:"seller"});
+        const data = await Kyc.findOne({email:user, userType:"seller"}).exec();
         if(!data)
             res.redirect('/seller/no_kyc');
         else
@@ -159,7 +160,7 @@ const noBank = (req,res)=>{
 const listBank = async(req,res)=>{
     try{
         const user = req.user.email;
-        const data = await Bank.findOne({email:user});
+        const data = await Bank.findOne({email:user}).exec();
         if(!data)
             res.redirect('/seller/no_bank');
         else
