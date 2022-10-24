@@ -424,7 +424,7 @@ const seller_reset = async(req, res) =>{
         if(!result)
             res.status(406).send(err);
         else{
-            const token = jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '5m' });
+            const token =await jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '5m' });
             res.cookie(`resetToken`,`${token}`, {maxAge: 600000}).status(200).send(result);
         }
     }
