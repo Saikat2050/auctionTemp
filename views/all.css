@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background: url(bgsignin.jpg) no-repeat center center fixed;
+    
+    background-size: cover;
+    
+
+}
+li a{
+    margin: 2px 20px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+
+}
+ul {
+    list-style-type: none;
+}
+p {
+   margin: 0;
+   color: white;
+   position: relative;
+   right: 5%;
+   font-size: 24px;
+   
+   
+}
+a{
+    color: white;
+    overflow: hidden;
+    background: linear-gradient(to right, orange 50%, white 50% );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    
+
+}
+a:hover{
+    background-position: 0 100%;
+}

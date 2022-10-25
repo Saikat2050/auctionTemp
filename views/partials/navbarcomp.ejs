@@ -1,0 +1,79 @@
+                                           <!-- HTML part -->
+<nav>
+    <div class="main" >
+        <img src="./image/auction_logo.png" alt="auction_logo" id="logo">
+        <div class="nav">
+        <button class="seller">Seller</button>
+        <button class="buyer">Buyer</button>
+    </div>
+</nav>
+                                         <!-- CSS part -->
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            background-color: black;
+            color:white;
+        }
+        #logo{
+            height: 33px;
+            width: 48px;
+           }
+        
+        .nav{
+              position: absolute;
+              left: 80%;
+              bottom: 95%;
+              
+        }
+        .seller{
+            
+            margin-right: 15px;
+            font-size: 15px;
+            cursor: pointer;
+            
+            font-style: italic;
+                font-weight: bold;
+                font-size: large;
+
+                color: white;
+    overflow: hidden;
+    background: linear-gradient(to right, blue 50%, white 50% );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+                
+            }
+            .seller:hover{
+                background-position: 0 100%;
+            }
+            .buyer{
+                font-size: 15px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-style: italic;
+                font-weight: bold;
+                font-size: large;
+
+                color: white;
+    overflow: hidden;
+    background: linear-gradient(to right, blue 50%, white 50% );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+            }
+            .buyer:hover{
+                background-position: 0 100%;
+            }
+            
+
+
+    </style>

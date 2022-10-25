@@ -7,50 +7,75 @@
     , initial-scale=1.0">
     <title>no-bank-details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/3403a4c9e3.js" crossorigin="anonymous"></script>
     <style>
         *{
             margin: 0px;
             padding: 0px;
         }
         body{
-            background-image: url('https://media.istockphoto.com/photos/gavel-on-auction-word-picture-id917901978?k=20&m=917901978&s=612x612&w=0&h=NULGu8-bVpy28gbW6AZbZlEVra-Q4s2rg607emPfkCs=');
+            background-image: url('https://cdn.pixabay.com/photo/2017/07/10/23/49/club-2492011__480.jpg');
             background-repeat: no-repeat;
             background-size: cover;
         }
          .bank{
-            height: 300px;
-            width: 400px;
+            height: 360px;
+            width: 510px;
             position: absolute;
-            border: 2px solid purple;
+            border: 2px solid black;
             top: 19%;
-            left: 35%;
+            left: 33%;
             padding: 30px;
             border-radius: 7px;
+            color: black;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 17px;
          }
          .banker{
             position: relative;
             left: 5%;
             
          }
+
+         form {
+        display: block;
+        margin-top: 20px;
+         }
+         button, input, optgroup, select, textarea {
+         margin: 8px;
+         font-family: inherit;
+         font-size: inherit;
+         line-height: inherit;
+         }
          .bene{
             margin: 8px;
+            border-radius: 6px;
          }
          .benea{
-            margin-right: 57px;
+            margin-right: 66px;
             
             
          }
          .beneb{
-            margin-right: 35px;
+            margin-right: 50px;
          }
          .benec{
-            margin-right: 60px;
+            margin-right: 90px;
          }
          .spbutt{
              position: absolute;
              right: 6%;
-             top: 175px;
+             top: 260px;
+             right: 17px;
             
+         }
+         #cheat{
+            margin: 5px;
+            color: black;
+         }
+         .btn btn-primary{
+            border:1px solid black;
          }
          
     </style>
@@ -60,17 +85,21 @@
     
     <div class="bank">
         <div class="banker">
-    <h2>If details not available</h2>
+    <h2>If bank details not available</h2>
     <form action="">
+        <i class="fa-sharp fa-solid fa-2x fa-file-signature" id="cheat"></i>
         <label for="name" class="bene">Beneficiary Name</label>
         <input type="text"><br>
 
+        <i class="fa-sharp fa-solid fa-2x fa-money-check" id="cheat"></i>
         <label for="name" class="benea">Bank Name</label>
         <input type="text" ><br>
 
+        <i class="fa-sharp fa-solid fa-2x fa-credit-card" id="cheat"></i>
         <label for="name" class="beneb">Branch Name</label>
         <input type="text" ><br>
 
+        <i class="fa-sharp fa-solid fa-2x fa-code-branch" id="cheat"></i>
         <label for="name" class="benec">IFCS code</label>
         <input type="text"><br>
          <div class="spbutt">

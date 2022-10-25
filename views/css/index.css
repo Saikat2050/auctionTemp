@@ -1,0 +1,59 @@
+.cointainer{
+    background-color: blanchedalmond;
+    display: flex;
+    padding: 50px;
+    justify-content: space-between;
+    color: black;
+ }
+ .card-body{
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  
+ }
+ .card{
+  padding: 50px;
+  border: 2px solid black;
+  background-color: chocolate;
+ }
+ 
+ 
+ .cointain{
+  height: 200px;
+  width: 400px;
+  background: none;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bolder;
+  font-style: italic;
+  padding: 30px;
+  color: white;
+  border: 2px solid purple;
+ 
+ }
+ .maincont{
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  border: 2px solid gray;
+  background-color: azure;
+  border-radius: 4px;
+  background: url("images/img8.jpg");
+ }
+ .cointain .butt{
+          padding: 10px;
+          
+          
+ }
+ .butto{
+  margin-inline: 12px;
+  border-radius: 4px;
+  font-style: italic;
+  font-weight: bold;
+  padding: 2px;
+ }
+ 
+
+
+

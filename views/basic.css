@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Oswald:wght@300&family=Raleway:ital,wght@1,300&display=swap');
+
+
+nav{
+    background-color: black;
+    color: white;
+    height: 35px;
+    font-family: 'Cairo', sans-serif;
+    
+}
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    
+    
+}
+nav ul li{
+    margin: 0px 10px;
+}
+.icon img{
+    height:35px;
+    width: 60px;
+    margin: 0 8px;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    
+}
+.buysell {
+    display: flex;
+    position: absolute;
+    left: 78%;
+    /* font-family: 'Raleway', sans-serif; */
+    font-weight: bold;
+    
+
+    
+}
+.buysell a {
+    text-decoration: none;
+    color: white;
+    margin: 4px;
+    
+}
+.cointainer2{
+    color: white;
+    justify-content: center;
+    text-align: center;
+    
+}
+.box1{
+    display: flex;
+    
+    margin: 4px;
+}
+.address{
+    margin: 0px 5px;
+}
+#iconaddress{
+    position: relative;
+    right: 6%;
+}
+.d-block w-100{
+    height: 300px;
+    width: 100vw;
+}
+
+
+
+
+
+
+
+.slide{
+    position: relative;
+    top: 45%;
+}
+
+
+.que{
+    color: black;
+    position: absolute;
+    left: 61%;
+    bottom: 85%;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bolder;
+    border-bottom: 2px solid black;
+    
+}
+.ques{
+    height: 385px;
+    width: 440px;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    bottom:18% ;
+    color: white;
+    /* font-size: 70px; */
+    font-weight: bolder;
+    font-style: italic;
+    border-radius: 7px;
+    padding: 20px;
+}
+/* .quest{
+    height: 300px;
+    background-color: red;
+    width: 400px;
+    margin: 40px;
+    padding-bottom: 120px;
+} */
+.slider{
+    height: 200px;
+    width: 600px;
+    position: relative;
+    bottom: 80px;
+    left: 13px;
+}
+
+                                              /* footer */
+
+.footer{
+    
+    position: static;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+
+}
+.social-links ul {
+    display: flex;
+    position: relative;
+    left: 41%;
+    font-size: 40px;
+    
+ }      
+ .social-items{
+    margin: 20px;
+    position: relative;
+    right: 4%;
+ }     
+ .quick-links ul{
+    display: flex;
+    position: relative;
+    left: 33%;
+ }
+ .quick-items{
+    margin: 5px;
+ }
+.outer-footer{
+    background-color: rgb(78, 71, 62);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            /* applying css for signin page */
+                                
+.cointainer{
+    
+    color: white;
+    position: absolute;
+    top: 32%;
+    left: 33%;
+}
+.cointainer h1{
+    font-size: 45px;
+    margin: 12px 0px;
+    padding: 6px;
+    color: black;
+    border-bottom: 5px solid chocolate;
+}
+.box input{
+    background: none;
+    border: none;
+    width: 75%;
+    margin: 8px 2px;
+    font-size: 20px;
+    outline: none;
+    color: white;
+    border-bottom: 2px solid chocolate;
+}
+.box i{
+    margin: 0px 8px;
+
+}
+.btn{
+    cursor: pointer;
+    width: 22%;
+    margin: 17px 0px;
+    padding: 8px;
+    border-radius: 10px;
+    background: none;
+    color: white;
+    border: 2px solid white;
+}
+#text{
+margin-left: 35px;
+width: 30%;
+}
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+                       /* applying css for registration form */
+
+.cointainer0{
+    position: absolute;
+    top: 6%;
+    left: 34%;
+    font-size: 30px;
+}
+.cointainer0 h1{
+    margin: 25px 8px;
+    border-bottom: 2px solid chocolate;
+    color: white;
+}
+
+.box0 input{
+    background: none;
+    border: none;
+    width: 75%;
+    margin: 8px 2px;
+    font-size: 20px;
+    outline: none;
+    color: white;
+    border-bottom: 2px solid chocolate;
+    
+}
+.box1{
+    margin: 4px 32px;
+    border-radius: 10px;
+}
+.btn0{
+    cursor: pointer;
+    width: 22%;
+    margin: 16px 6px;
+    padding: 8px;
+    border-radius: 10px;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    font-size: 18px;
+}
+#message{
+ font-size: 15px;   
+ font-style: italic;
+ font-weight: bolder;
+ border-radius: 10px;
+}
+
+
+                                        /* otp page css */
+
+.cointainer1{
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    
+    height: 145px;
+    width: 259px;
+    text-align: center;
+    justify-content: center;
+}
+.cointainer1 h1{
+    margin: 19px 0px;
+    border-bottom: 2px solid white;
+    display: inline-block;
+}
+.cointainer2 {
+    margin: 10px 0px;
+}
+.cointainer1 input{
+    background: none;
+    border: 2px solid white;
+    width: 75%;
+    margin: 8px 2px;
+    font-size: 20px;
+    outline: none;
+    color: white;
+}
+
+.btn1{
+    cursor: pointer;
+    
+    margin: 16px 6px;
+    padding: 8px;
+    border-radius: 10px;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    font-size: 18px;
+}
