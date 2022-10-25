@@ -18,6 +18,7 @@ const auctionSchema = new Schema(
         address: { type: String, required: true, default: "online" },
         date: {type: Date, required: true},
         contact: {type: Number},
+        isDeleted:{type: Boolean, required: true, default: false},
     },
     { timestamps: true }
 );
