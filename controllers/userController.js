@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {transporter} = require('../config/keys');
 const _ = require('lodash');
+const Admin = require('../models/adminSchema');
 const secret = process.env.SECRECT;
 const otpSecret = process.env.OTPSECRET;
 const saltRounds = 10;
@@ -480,6 +481,70 @@ const logout = async(req,res)=>{
         res.status(400).send(err);
     } 
 };
+const admin_login = (req,res)=>{
+    try{
+        res.status(200).send(success);
+    }
+    catch (err) {
+        res.status(400).send(err);
+    }
+};
+const adminLogin = async (req,res)=>{
+    try{
+        const msg = process.env.REGISTER;
+        const errormsg = process.env.NOTVERIFIED;
+        const error = process.env.LOGIN;
+        const email = req.body.email;
+        const password = req.body.password;
+        const result = await Admin.findOne({email});
+        if(!result)
+            res.status(403).send(msg);
+        else{
+        const hash = result.password;
+        const verification = await bcrypt.compare(password, hash); 
+        if(verification){
+            const token =await jwt.sign({ data: `${result._id}` }, secret, { expiresIn: '10h' });
+            res.cookie(`authToken`,`${token}`).status(200).send(success);
+        }
+        else
+            res.status(403).send(error);
+        }
+    }
+    catch (err) {
+        res.status(400).send(err);
+    }
+};
+const admin_register = (req,res)=>{
+    try{
+        res.status(200).send(success);
+    }
+    catch (err) {
+        res.status(400).send(err);
+    }
+};
+const adminRegistration = async(req,res)=>{
+    try{
+        const msg = process.env.EXIST;
+    const mis = process.env.MISMATCH;
+    const email = req.body.email;
+    const result = await Admin.findOne({email});
+    if(!result){
+        if(req.body.password==req.body.confirm){
+        const admin = new Admin(req.body);
+        admin.password = await bcrypt.hash(admin.password, saltRounds);
+       const data = await admin.save();
+        res.clearCookie('authToken').status(201).send(success);
+        }
+        else
+            res.status(400).send(mis);
+    }
+    else 
+        res.status(409).send(msg);
+    }
+    catch (err) {
+        res.status(400).send(err);
+    }
+};
 
 module.exports = {
     dashboard,
@@ -505,5 +570,9 @@ module.exports = {
     sell_otp,
     sellOtp,
     seller_otp,
-    logout
+    logout,
+    admin_login,
+    adminLogin,
+    admin_register,
+    adminRegistration
 }

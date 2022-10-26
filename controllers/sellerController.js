@@ -2,8 +2,7 @@ const Sell = require('../models/sellHistorySchema');
 const Item = require('../models/itemSchema');
 const Auction = require('../models/auctionSchema');
 const dotenv = require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const Kyc = require('../models/kyc');
+const Kyc = require('../models/kycSchema');
 const Bank = require('../models/bankSchema');
 const Pay = require('../models/donateSchema');
 const Issue = require('../models/issueSchema');
@@ -11,9 +10,7 @@ const PUBLISHABLE_KEY=process.env.PUBLISHABLE_KEY;
 const SECRET_KEY=process.env.SECRET_KEY;
 const stripe=require('stripe')(SECRET_KEY);
 //const {sellerOauth} = require('../config/keys');
-const secret = process.env.SECRECT;
 const success = process.env.SUCCESS;
-const notAuth = process.env.NOTAUTH;
 
 const seller_dashboard = async(req,res)=>{
     try{
@@ -193,7 +190,7 @@ const createBank = async(req,res)=>{
 const profile = async(req,res)=>{
     try{
         const user = req.user;
-        const data = await Kyc.findOne({email:user.email});
+        const data = await Kyc.findOne({email:user.email, userType:"seller"});
         res.status(200).send(data, user);
     }
     catch(err){
