@@ -19,6 +19,7 @@ const auctionSchema = new Schema(
         date: {type: Date, required: true},
         contact: {type: Number},
         isDeleted:{type: Boolean, required: true, default: false},
+        isStarted:{type: Boolean, required: true, default: false},
     },
     { timestamps: true }
 );

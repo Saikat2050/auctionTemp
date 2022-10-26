@@ -58,6 +58,28 @@ const deleteAuction = async(req,res)=>{
         res.status(400).send(err);
     }
 };
+const startAuction = async(req,res)=>{
+    try{
+            const user = req.user;
+            const id = req.query.id;
+            const data = await Auction.findByIdAndUpdate(id,{isStarted: true});
+            res.status(200).send(success);
+    }
+    catch(err){
+        res.status(400).send(err);
+    }
+};
+const stopAuction = async(req,res)=>{
+    try{
+            const user = req.user;
+            const id = req.query.id;
+            const data = await Auction.findByIdAndUpdate(id,{isStarted: false, isDeleted: true});
+            res.status(200).send(success);
+    }
+    catch(err){
+        res.status(400).send(err);
+    }
+};
 const update = async(req,res)=>{
     try{
             const user = req.user;
@@ -194,5 +216,7 @@ module.exports = {
     approve,
     reject,
     approveReturn,
-    rejectReturn
+    rejectReturn,
+    startAuction,
+    stopAuction
 }
