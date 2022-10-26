@@ -13,9 +13,11 @@ const app = express();
 app.use(cors());
 app.use(cookieParser());
 app.use(express.static('public'));
+app.use(express.static("views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));  
 app.use(express.static(__dirname+"./public/"));
+app.use('/public', express.static('public'));
 
 app.set('view engine', 'ejs');
 
