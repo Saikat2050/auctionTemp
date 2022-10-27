@@ -12,6 +12,8 @@ router.post('/create', adminController.createAuction);
 router.get('/delete', adminController.deleteAuction);
 router.get('/update', adminController.update);
 router.post('/update', adminController.updateAuction);
+router.get('/start', adminController.startAuction);
+router.get('/stop', adminController.stopAuction);
 router.get('/kyc', adminController.listKyc);
 router.get('/bank', adminController.listBank);
 router.get('/return_item', adminController.listReturn);

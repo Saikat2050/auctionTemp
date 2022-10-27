@@ -15,7 +15,7 @@ const itemSchema = new Schema(
         avatar:{type: String},
         quantity: { type: Number, required: true, default: 1 },
         price: { type: Number, required: true },
-        itemId: {
+        auctionId: {
             type: mongoose.SchemaTypes.ObjectId,
             required: true,
             ref: "Auction"
