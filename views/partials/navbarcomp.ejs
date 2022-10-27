@@ -3,9 +3,10 @@
     <div class="main" >
         <img src="./public/auction_logo-copy.png" alt="auction_logo" id="logo">
         <div class="nav">
+            <button class="buton">Admin</button>
         <button class="seller">Seller</button>
         <button class="buyer">Buyer</button>
-        <button class="buton">Admin</button>
+        
     </div>
 </nav>
                                          <!-- CSS part -->
@@ -31,29 +32,50 @@
         }
         .seller{
             
-            margin-right: 15px;
-            font-size: 15px;
-            cursor: pointer;
+                margin-right: 15px;
+                font-size: 15px;
+                cursor: pointer;
             
-            font-style: italic;
+                font-style: italic;
                 font-weight: bold;
                 font-size: large;
 
-                color: white;
-    overflow: hidden;
-    background: linear-gradient(to right, blue 50%, white 50% );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200%;
-    background-position: 100%;
-    transition: background-position 275ms ease;
+               color: white;
+               overflow: hidden;
+               background: linear-gradient(to right, blue 50%, white 50% );
+               background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+               background-size: 200%;
+               background-position: 100%;
+               transition: background-position 275ms ease;
                 
             }
             .seller:hover{
                 background-position: 0 100%;
             }
             .buyer{
+                font-size: 15px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-style: italic;
+                font-weight: bold;
+                font-size: large;
+
+                color: white;
+                overflow: hidden;
+                background: linear-gradient(to right, blue 50%, white 50% );
+                background-clip: text;
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
+               background-size: 200%;
+               background-position: 100%;
+               transition: background-position 275ms ease;
+            }
+            .buyer:hover{
+                background-position: 0 100%;
+            }
+            .buton{
                 font-size: 15px;
                 border-radius: 6px;
                 cursor: pointer;
@@ -71,7 +93,7 @@
     background-position: 100%;
     transition: background-position 275ms ease;
             }
-            .buyer:hover{
+            .buton:hover{
                 background-position: 0 100%;
             }
             
