@@ -15,6 +15,7 @@ const success = process.env.SUCCESS;
 const dashboard = (req,res)=>{
     try{ 
         res.status(200).render('home',{title:"Home"});
+        
     }
     catch (err) {
         res.status(400).send(err);
