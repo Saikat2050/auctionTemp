@@ -1,0 +1,218 @@
+body{
+    background-image: url("https://economictimes.indiatimes.com/thumb/msid-82060285,width-1200,height-900,resizemode-4,imgsize-305894/art-auction_istock.jpg?from=mdr");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.maint{
+    background-color: black;
+    color:white;
+}
+#log{
+    height: 33px;
+    width: 48px;
+    
+   }
+ .navv{
+    position: absolute;
+    left: 90%;
+    bottom: 95%;
+    
+}
+.navv a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+
+    color: white;
+    overflow: hidden;
+    background: linear-gradient(to right, red 50%, white 50% );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+     background-size: 200%;
+     background-position: 100%;
+     transition: background-position 275ms ease;
+}
+.navv a:hover{
+    background-position: 0 100%}
+
+    #dem{
+        font-size: 30px;
+        position: absolute;
+        top: 10%;
+        left: 2%;
+        height: 40px;
+        width: 300px;
+        background-color: antiquewhite;
+        text-align: center;
+    }
+    .pico{
+        height: 500px;
+        width: 1000px;
+        border-radius: 8px;
+    }
+    .com{
+        position: relative;
+        left: 80%;
+        bottom: 400px;
+        color: white;
+        font-size: 20px;
+        width: 250px;
+        font-weight: bold;
+        
+        
+    }
+    #amt{
+        position: relative;
+        left: 70px;
+    }
+    #com{
+        position: relative;
+        top: 20px;
+        left: 80px;
+    }
+    #comment{
+        text-align: center;
+        font-size: 20px;
+        border: 2px solid brown;
+        border-radius: 10px;
+    }
+    .tex{
+        position: relative;
+        left: 30px;
+        bottom: 30px;
+    }
+    .doc{
+        position: relative;
+        left: 60%;
+        bottom: 350px;
+        height: 400px;
+        width: 300px;
+        color: aliceblue;
+        text-align: center;
+        font-weight: bold;
+        font-style: italic;
+    }
+    .docu{
+        text-align: justify;
+        margin-top: 20px;
+    }
+
+                                        /* admin page */
+
+ .ing{margin-left: 650px;
+      border-bottom: 2px solid black;
+    }
+#a{
+    position: relative;
+    top: 18px;
+    left: 80px;
+}
+#b{
+    position: relative;
+    top: 200px;
+    left: 80px;
+}
+#c{
+    position: relative;
+    top: 390px;
+    left: 100px;
+}
+#d{
+    position: relative;
+    left: 530px;
+    top: 400px;
+}
+#e{
+    position: relative;
+    top: 200px;
+    left: 550px;
+}
+#f{
+    position: relative;
+    left: 550px;
+    top: 20px;
+}
+
+
+                              /* create auction */
+    
+    .cre{
+        position: absolute;
+        left: 470px;
+        top: 120px;
+        font-size: 20px;
+        padding: 20px;
+        border: 2px solid black;
+        height: 400px;
+        font-weight: bold;
+        color: white;
+        font-style: italic;
+        border-radius: 8px;
+    }
+    .one{
+        
+        margin-left: 30px;
+        margin-bottom: 10px;
+    }
+    .two{
+        margin-left: 12px;
+    }
+    .three{
+        margin-left: 37px;
+        margin-top: 10px;
+    }
+    .four{
+        margin-left: 28px;
+    }
+    .five{
+        margin-right: 14px;
+        margin-top: 10px;
+    }
+    .six{
+        margin-left: 31px;
+        margin-top: 10px;
+    }
+    #det{
+        position: relative;
+        bottom: 33px;
+    }
+    #up{
+        position: relative;
+        top: 50px;
+        right: 10px;
+    }
+
+
+                                     /* auction list */
+
+                                     .container{
+                                        position: absolute;
+                                        left: 350px;
+                                        top: 20px;
+                                    }
+                                    table, th, td{
+                                        border: 1px solid black;
+                                        border-radius: 6px;
+                                    }
+                                    td,th{
+                                        background-color: aquamarine;
+                                        padding: 10px;
+                                        font-style: italic;
+                                    }
+                                    tr td a{
+                                        list-style: none;
+                                        text-decoration: none;
+                                        color: black;
+                                    }
+                                    .photos{
+                                        height: 25px;
+                                        width: 25px;
+                                    }
+
+                                
